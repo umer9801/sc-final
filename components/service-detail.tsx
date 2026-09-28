@@ -103,13 +103,22 @@ export function ServiceDetail({ service, i }: { service: Service; i: number }) {
             </div>
           </div>
 
-          <Link
-            href="/contact"
-            className="group mt-8 inline-flex items-center gap-2 font-medium text-charcoal"
-          >
-            Start a {service.short} project
-            <ArrowUpRight className="size-4 text-forest transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </Link>
+          <div className="mt-8 flex flex-wrap items-center gap-3">
+            <Link
+              href={`/services/${service.id}`}
+              className="group inline-flex items-center gap-2 border-2 border-charcoal bg-charcoal px-5 py-2.5 font-mono text-xs uppercase tracking-widest text-pearl shadow-[3px_3px_0_0_oklch(0.40_0.07_158)] transition-all hover:shadow-[1px_1px_0_0_oklch(0.40_0.07_158)] hover:translate-x-[2px] hover:translate-y-[2px]"
+            >
+              View Details
+              <ArrowUpRight className="size-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </Link>
+            <Link
+              href="/contact"
+              className="group inline-flex items-center gap-2 border-2 border-line px-5 py-2.5 font-mono text-xs uppercase tracking-widest text-charcoal transition-all hover:border-charcoal"
+            >
+              Start a Project
+              <ArrowUpRight className="size-3.5 text-forest transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </Link>
+          </div>
         </div>
 
         <ServiceVisual service={service} flip={flip} />

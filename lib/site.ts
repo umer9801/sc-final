@@ -22,6 +22,16 @@ export const MEGA_MENU: MegaItem[] = [
   { key: 'ECOMMERCE', title: 'E-commerce', description: 'Storefronts, POS & payments', href: '/services#ecommerce' },
 ]
 
+export type ServiceFeature = {
+  title: string
+  body: string
+}
+
+export type ServiceFaq = {
+  q: string
+  a: string
+}
+
 export type Service = {
   no: string
   id: string
@@ -30,6 +40,14 @@ export type Service = {
   description: string
   capabilities: string[]
   stack: string[]
+  image?: string
+  video?: string
+  tagline?: string
+  longDescription?: string
+  features?: ServiceFeature[]
+  process?: { no: string; title: string; body: string }[]
+  faqs?: ServiceFaq[]
+  results?: { value: string; label: string }[]
 }
 
 export const SERVICES: Service[] = [
@@ -38,70 +56,283 @@ export const SERVICES: Service[] = [
     id: 'web',
     title: 'Web Development',
     short: 'Web',
+    image: '/web.jpeg',
+    tagline: 'Websites that perform, convert and last.',
     description:
       'High-performance marketing sites and web platforms engineered for speed, accessibility and measurable conversion.',
+    longDescription:
+      'Your website is the single most leveraged piece of digital infrastructure you own. It works 24/7, reaches every market and sets the first impression for every lead, investor and hire. We build sites that are fast by default, accessible by design and conversion-optimised from day one — not retrofitted later.',
     capabilities: ['Design systems', 'Headless CMS', 'Edge rendering', 'Core Web Vitals'],
     stack: ['Next.js', 'React', 'TypeScript', 'Tailwind'],
+    features: [
+      { title: 'Performance-first architecture', body: 'Every site we ship targets a 95+ Lighthouse score. We optimise images, fonts, scripts and server response times before launch — not after a complaint.' },
+      { title: 'Design systems that scale', body: 'We build component libraries, not one-off pages. Your team can add new content without breaking the visual language.' },
+      { title: 'Headless CMS integration', body: 'Sanity, Contentful or any CMS your team already knows. Editors get a clean interface; engineers get full control over rendering.' },
+      { title: 'SEO and Core Web Vitals', body: 'LCP under 2.5s, zero layout shift, full metadata control. We treat SEO as engineering, not an afterthought.' },
+      { title: 'Accessibility built in', body: 'WCAG 2.1 AA compliance, keyboard navigation, screen reader support — included in every build, not sold as an add-on.' },
+      { title: 'Analytics and tracking', body: 'GA4, Plausible, Vercel Analytics — we instrument what matters so you can make decisions based on data, not guesses.' },
+    ],
+    process: [
+      { no: '01', title: 'Discovery & strategy', body: 'We audit your current site, map conversion goals and define the content architecture before touching design.' },
+      { no: '02', title: 'Design system build', body: 'Typography, spacing, colour and component library — established once and used consistently everywhere.' },
+      { no: '03', title: 'Page development', body: 'Built in Next.js, optimised for edge delivery, tested across devices and browsers.' },
+      { no: '04', title: 'CMS integration', body: 'Your content team gets a clean editing experience. We document every content type and field.' },
+      { no: '05', title: 'Performance audit', body: 'Lighthouse, PageSpeed, real-device testing. We fix every issue before handover.' },
+      { no: '06', title: 'Launch & support', body: 'Zero-downtime deployment, DNS handover, post-launch monitoring and a 30-day support window.' },
+    ],
+    faqs: [
+      { q: 'How long does a website take?', a: 'A marketing site typically takes 4–8 weeks from kick-off to launch, depending on the number of pages and CMS complexity.' },
+      { q: 'Do you do design as well?', a: 'Yes — strategy, design and engineering are handled by the same team. No agency hand-offs.' },
+      { q: 'Which CMS do you use?', a: 'We recommend Sanity for most projects, but we can work with any headless CMS your team already uses.' },
+      { q: 'Can we update the site ourselves?', a: 'Yes. We build the CMS integration so non-technical editors can update content, add pages and change copy without touching code.' },
+    ],
+    results: [
+      { value: '98', label: 'Avg. Lighthouse score' },
+      { value: '+120%', label: 'Engagement uplift' },
+      { value: '0.4s', label: 'LCP achieved' },
+    ],
   },
   {
     no: '02',
     id: 'saas',
     title: 'SaaS Products',
     short: 'SaaS',
+    tagline: 'From first user to ten thousand — the same codebase.',
     description:
       'Multi-tenant SaaS products with billing, auth, dashboards and infrastructure built to scale from first user to thousands.',
+    longDescription:
+      'Building a SaaS product is not about writing features — it is about making the right architectural decisions on day one. Multi-tenancy, billing, authentication, role systems and analytics need to be designed before you write the first line of product code. We have shipped enough SaaS products to know which decisions are hard to undo, and we make sure you do not make the expensive ones.',
     capabilities: ['Multi-tenancy', 'Billing & auth', 'Analytics', 'Role systems'],
     stack: ['Next.js', 'Node.js', 'PostgreSQL', 'Stripe'],
+    features: [
+      { title: 'Multi-tenant data architecture', body: 'Row-level security with PostgreSQL, tenant isolation built in from day one. Retrofitting tenancy later is expensive — we design it right the first time.' },
+      { title: 'Authentication & authorisation', body: 'Email/password, SSO, OAuth and role-based access control. We use battle-tested libraries and never roll our own crypto.' },
+      { title: 'Stripe billing integration', body: 'Subscriptions, usage-based billing, trials, coupons and dunning — wired into your product data model, not bolted on.' },
+      { title: 'Analytics & instrumentation', body: 'Event tracking, funnel analysis, retention metrics. We instrument your product from launch so you have data on day one.' },
+      { title: 'Admin & ops dashboards', body: 'Internal tooling for your team — user management, billing overrides, impersonation, audit logs.' },
+      { title: 'Infrastructure & DevOps', body: 'CI/CD pipelines, environment management, database migrations, uptime monitoring. Production-ready from the first deploy.' },
+    ],
+    process: [
+      { no: '01', title: 'Product architecture', body: 'Data models, tenancy strategy, billing design and API contracts — defined before we write application code.' },
+      { no: '02', title: 'Auth & billing foundation', body: 'Authentication, authorisation and Stripe integration built as a foundation the rest of the product sits on.' },
+      { no: '03', title: 'Core product build', body: 'Feature development in tight weekly iterations, each ending with a real demo of working software.' },
+      { no: '04', title: 'Admin & ops tooling', body: 'Internal dashboards and tooling so your team can manage users, debug issues and operate the product.' },
+      { no: '05', title: 'Performance & security', body: 'Load testing, penetration testing basics, dependency audits, rate limiting and error monitoring.' },
+      { no: '06', title: 'Launch & scale', body: 'Production deployment, runbook handover, on-call setup and retained engineering support.' },
+    ],
+    faqs: [
+      { q: 'How do you handle multi-tenancy?', a: 'We use shared-schema with PostgreSQL Row Level Security as the default. For enterprise requirements we can use schema-per-tenant isolation.' },
+      { q: 'Do you handle Stripe integration?', a: 'Yes — subscriptions, trials, usage billing, webhooks, invoicing and the customer portal. Full integration, not just the checkout.' },
+      { q: 'How long does a SaaS MVP take?', a: 'A production-ready MVP with auth, billing and core features typically takes 8–14 weeks depending on scope.' },
+      { q: 'What happens after launch?', a: 'We offer retained engineering partnerships — a set number of hours per month for features, fixes and infrastructure.' },
+    ],
+    results: [
+      { value: '4.2x', label: 'Faster onboarding' },
+      { value: '-38%', label: 'Support tickets' },
+      { value: '99.9%', label: 'Uptime' },
+    ],
   },
   {
     no: '03',
     id: 'mobile',
     title: 'Mobile Applications',
     short: 'Mobile',
+    video: '/videos/app.MP4',
+    tagline: 'One codebase. Two platforms. No compromises.',
     description:
       'Native-feeling iOS and Android applications with shared codebases, offline support and polished motion.',
+    longDescription:
+      'Mobile users are the most demanding users you will have. They expect instant load, smooth animations, offline support and native behaviour on their device. We build cross-platform apps using React Native and Expo — one codebase that produces genuinely native-feeling experiences on both iOS and Android, without the cost of two separate teams.',
     capabilities: ['Cross-platform', 'Offline-first', 'Push & deep links', 'App store ops'],
     stack: ['React Native', 'Expo', 'TypeScript', 'Firebase'],
+    features: [
+      { title: 'Cross-platform from one codebase', body: 'React Native with Expo — iOS and Android from a single TypeScript codebase. Shared logic, platform-appropriate UI.' },
+      { title: 'Offline-first architecture', body: 'We design data sync and local storage from day one so your app works without a connection and syncs cleanly when it returns.' },
+      { title: 'Push notifications', body: 'Expo Notifications with Firebase — rich notifications, deep links, notification preferences and delivery analytics.' },
+      { title: 'Native animations at 60fps', body: 'Reanimated 3, Gesture Handler and carefully profiled interactions. Smooth on low-end devices, not just the demo phone.' },
+      { title: 'App store submission', body: 'We handle App Store and Google Play submission, screenshots, metadata, review responses and version management.' },
+      { title: 'Authentication & security', body: 'Biometric auth, secure storage, certificate pinning and OWASP mobile security best practices.' },
+    ],
+    process: [
+      { no: '01', title: 'UX & navigation architecture', body: 'Screen map, user flows, navigation hierarchy and offline data strategy defined before design starts.' },
+      { no: '02', title: 'Design & prototype', body: 'High-fidelity screens in Figma, interactive prototype for stakeholder sign-off before development begins.' },
+      { no: '03', title: 'Core app development', body: 'Screens, navigation, API integration and local storage — built in weekly sprints with TestFlight builds.' },
+      { no: '04', title: 'Offline & sync layer', body: 'Conflict resolution, optimistic updates and background sync — tested with real network conditions, not just airplane mode.' },
+      { no: '05', title: 'Device & OS testing', body: 'Tested on physical iOS and Android devices across OS versions, screen sizes and connection speeds.' },
+      { no: '06', title: 'App store launch', body: 'Screenshots, descriptions, privacy policy, review process management and post-launch crash monitoring.' },
+    ],
+    faqs: [
+      { q: 'React Native or native?', a: 'For most business apps React Native is the right choice — one team, one codebase, 90% of the native experience at 50% of the cost. We recommend fully native only for apps with extreme performance requirements.' },
+      { q: 'How long does an app take?', a: 'A production-ready mobile app typically takes 10–16 weeks from kick-off to App Store submission.' },
+      { q: 'Do you handle app store submission?', a: 'Yes — developer account setup, store listings, screenshots, privacy manifests, review process and version updates.' },
+      { q: 'Can the app work offline?', a: 'Yes — offline-first architecture is a first-class feature we design from day one, not an afterthought.' },
+    ],
+    results: [
+      { value: '4.8', label: 'App store rating' },
+      { value: '60fps', label: 'Interaction speed' },
+      { value: '2', label: 'Platforms from one codebase' },
+    ],
   },
   {
     no: '04',
     id: 'ai',
     title: 'AI Systems',
     short: 'AI',
+    tagline: 'AI that works in production, not just in demos.',
     description:
       'AI chatbots, agents and retrieval systems wired directly into your data, tools and business workflows.',
+    longDescription:
+      'AI demos are easy. Production AI is hard. The gap between a chatbot that impresses in a presentation and one that handles 500 real users a day without hallucinating, looping or breaking is an engineering problem — not a prompt engineering problem. We have built AI systems in production and we know where they fail. We design guardrails, observability and human handoff paths before we write the first agent.',
     capabilities: ['Chatbots & agents', 'RAG pipelines', 'Evals', 'Guardrails'],
     stack: ['OpenAI', 'LangChain', 'Vector DBs', 'AI SDK'],
+    features: [
+      { title: 'RAG pipelines', body: 'Retrieval-augmented generation over your documents, database or knowledge base. Answers grounded in your data, not hallucinated.' },
+      { title: 'AI agents with tool use', body: 'Agents that can query your CRM, send emails, update records and call APIs — with confidence thresholds and human escalation paths.' },
+      { title: 'Chatbot integration', body: 'Embedded chat widgets, Slack bots, WhatsApp integration — wherever your users already are.' },
+      { title: 'Evaluation & evals', body: 'Automated test suites for your AI outputs. We define what good looks like and measure it, so regressions are caught before they reach users.' },
+      { title: 'Guardrails & safety', body: 'Input/output filtering, confidence thresholds, topic restriction and audit logging — production safety from day one.' },
+      { title: 'Observability & tracing', body: 'Every prompt, response, tool call and escalation is logged as a structured trace. You can replay any conversation and see exactly what happened.' },
+    ],
+    process: [
+      { no: '01', title: 'Use case definition', body: 'We define exactly what the AI is allowed to do, what it must refuse, and what the success metric is — before building anything.' },
+      { no: '02', title: 'Data & knowledge audit', body: 'We map the data sources the AI needs access to and design the retrieval strategy.' },
+      { no: '03', title: 'Prototype & eval baseline', body: 'A minimal prototype against a test suite. We measure accuracy before we start optimising.' },
+      { no: '04', title: 'Agent & tool integration', body: 'Tools, APIs and data sources connected with explicit permission models and error handling.' },
+      { no: '05', title: 'Guardrails & handoff paths', body: 'Human escalation, refusal handling and safety filtering built before production traffic.' },
+      { no: '06', title: 'Production & monitoring', body: 'Deployed with full tracing, escalation rate dashboards and a plan for retraining or prompt updates.' },
+    ],
+    faqs: [
+      { q: 'Which AI model do you use?', a: 'GPT-4o for most use cases. We evaluate the right model for each task — including local models when data privacy requires it.' },
+      { q: 'How do you prevent hallucinations?', a: 'RAG grounds answers in real data, confidence thresholds block low-certainty responses, and evals catch regressions before they ship.' },
+      { q: 'Can the AI access our internal data?', a: 'Yes — we connect AI systems to your CRM, database, documents or APIs with appropriate access controls and audit logging.' },
+      { q: 'How long does an AI system take?', a: 'A production-ready AI chatbot or agent pipeline typically takes 4–8 weeks depending on the number of tools and data sources.' },
+    ],
+    results: [
+      { value: '82%', label: 'Requests auto-resolved' },
+      { value: '11h', label: 'Saved weekly per team' },
+      { value: '<2min', label: 'Average response time' },
+    ],
   },
   {
     no: '05',
     id: 'automation',
     title: 'Automation',
     short: 'Automation',
+    image: '/automation.jpeg',
+    tagline: 'Remove the manual work. Keep the humans for what matters.',
     description:
       'Business process automation with n8n and custom integrations that remove manual work across your stack.',
+    longDescription:
+      'Every business has processes that run on copy-paste, spreadsheets and someone remembering to do something. Automation replaces those processes with reliable, documented, monitored workflows that run without human intervention. We use n8n as our primary automation platform — self-hostable, flexible and powerful enough to connect anything to anything.',
     capabilities: ['n8n workflows', 'API integrations', 'Data sync', 'Ops tooling'],
     stack: ['n8n', 'Node.js', 'Webhooks', 'REST & GraphQL'],
+    features: [
+      { title: 'n8n workflow builds', body: 'We design, build and document n8n workflows for any business process — from lead routing to invoice generation to data sync.' },
+      { title: 'API integrations', body: 'Connect any two systems that have an API. CRM, email, Slack, accounting, project management, custom internal tools.' },
+      { title: 'Data sync & ETL', body: 'Keep your systems in sync — CRM to database, spreadsheet to dashboard, webhook to Slack. No more manual exports.' },
+      { title: 'Error handling & alerting', body: 'Every workflow has an explicit failure path. Errors create tickets, send Slack alerts and never fail silently.' },
+      { title: 'Monitoring & versioning', body: 'Workflows are version-controlled, monitored for execution time and failure rate, and documented in plain English.' },
+      { title: 'Self-hosted or cloud', body: 'n8n can be self-hosted on your infrastructure for full data control, or run on n8n Cloud. We handle the setup either way.' },
+    ],
+    process: [
+      { no: '01', title: 'Process mapping', body: 'We document the current manual process step by step, identify every system it touches and define what done looks like.' },
+      { no: '02', title: 'Automation design', body: 'Happy path, error paths, edge cases and failure handling — all designed before we open n8n.' },
+      { no: '03', title: 'Workflow build', body: 'Built in n8n, tested with real data, reviewed and approved before going live.' },
+      { no: '04', title: 'Error handling & alerting', body: 'Every workflow gets an explicit failure path — Slack alert, ticket creation or email, depending on severity.' },
+      { no: '05', title: 'Documentation & handover', body: 'Plain-English documentation, owner assigned, monitoring dashboard set up.' },
+      { no: '06', title: 'Monitoring & iteration', body: 'We review workflow performance at 30 and 90 days and optimise based on real execution data.' },
+    ],
+    faqs: [
+      { q: 'Why n8n instead of Zapier?', a: 'n8n is more powerful, cheaper at scale and can be self-hosted — which matters for data privacy. For simple one-step automations Zapier is fine; for complex multi-step workflows n8n wins every time.' },
+      { q: 'Can you automate our existing tools?', a: 'If they have an API or webhook support, yes. We have integrated CRMs, accounting tools, project management platforms, custom databases and dozens of SaaS tools.' },
+      { q: 'What if a workflow breaks?', a: 'We build explicit error handling into every workflow. Failures create visible alerts — they never fail silently.' },
+      { q: 'How long does automation take?', a: 'A single well-scoped automation typically takes 1–2 weeks. A full automation audit and build-out for a business takes 4–8 weeks.' },
+    ],
+    results: [
+      { value: '82%', label: 'Auto-resolved requests' },
+      { value: '11h', label: 'Saved per week' },
+      { value: '0', label: 'Silent failures' },
+    ],
   },
   {
     no: '06',
     id: 'ecommerce',
     title: 'E-commerce',
     short: 'E-commerce',
+    tagline: 'Storefronts built for conversion, not just looks.',
     description:
       'Conversion-focused storefronts, POS systems and payment flows engineered for reliability at checkout.',
+    longDescription:
+      'E-commerce is unforgiving. A 1-second delay costs conversion. A broken checkout costs revenue. A stock conflict costs trust. We build storefronts, POS systems and payment flows that are fast, reliable and unified — online and in-store inventory in sync, checkout that never fails and a customer experience that converts.',
     capabilities: ['Storefronts', 'POS systems', 'Payments', 'Inventory'],
     stack: ['Shopify', 'Stripe', 'Next.js', 'Postgres'],
+    features: [
+      { title: 'High-conversion storefronts', body: 'Custom Shopify themes or headless Next.js storefronts — built for speed, accessibility and checkout conversion.' },
+      { title: 'POS systems', body: 'Custom or Shopify POS for brick-and-mortar locations — online and in-store inventory unified in real time.' },
+      { title: 'Payment integration', body: 'Stripe, Shopify Payments, buy-now-pay-later, subscription billing — whatever your customers expect at checkout.' },
+      { title: 'Inventory management', body: 'Real-time inventory sync across channels. No more overselling, stock conflicts or manual updates.' },
+      { title: 'Offline-first POS', body: 'POS that works without internet and syncs when connectivity returns — sales never blocked by a network outage.' },
+      { title: 'Analytics & attribution', body: 'Full funnel analytics — where users drop off, what drives conversion and how to improve it.' },
+    ],
+    process: [
+      { no: '01', title: 'Commerce audit', body: 'Current stack, inventory setup, payment methods and conversion funnel mapped before we touch anything.' },
+      { no: '02', title: 'Architecture decision', body: 'Shopify-native, headless or custom — we recommend the right architecture for your scale and team.' },
+      { no: '03', title: 'Storefront build', body: 'Product pages, collection pages, cart and checkout — built for performance and conversion.' },
+      { no: '04', title: 'Payment & inventory integration', body: 'Stripe or Shopify Payments, inventory sync, order management and fulfilment workflows.' },
+      { no: '05', title: 'POS setup', body: 'In-store POS connected to online inventory, staff training and hardware setup if required.' },
+      { no: '06', title: 'Launch & optimise', body: 'A/B testing setup, analytics instrumentation, conversion monitoring and ongoing optimisation.' },
+    ],
+    faqs: [
+      { q: 'Shopify or custom?', a: 'Shopify for most retail businesses — the ecosystem, payments and ops tooling are hard to beat. Custom Next.js storefront when you need performance or flexibility that Shopify cannot provide.' },
+      { q: 'Can you unify online and in-store?', a: 'Yes — unified inventory, shared customer records and real-time sync between your storefront and POS.' },
+      { q: 'How do you improve conversion?', a: 'Page speed, checkout flow simplification, trust signals, mobile optimisation and A/B testing — measured against your actual baseline.' },
+      { q: 'Do you handle Stripe integration?', a: 'Yes — Stripe Checkout, Payment Intents, subscription billing, webhooks and payout reconciliation.' },
+    ],
+    results: [
+      { value: '+46%', label: 'Conversion uplift' },
+      { value: '2.1s', label: 'Average load time' },
+      { value: '0', label: 'Stock conflicts post-launch' },
+    ],
   },
   {
     no: '07',
     id: 'software',
     title: 'Custom Software',
     short: 'Software',
+    tagline: 'Software shaped around how your business actually works.',
     description:
       'Bespoke internal tools, dashboards and platforms tailored to how your business actually operates.',
+    longDescription:
+      'Off-the-shelf software is built for everyone, which means it fits no one perfectly. When your operations require workflows, data models or integrations that no existing tool supports, you need custom software. We build internal tools, operational dashboards and custom platforms that match exactly how your team works — and evolve as your business does.',
     capabilities: ['Internal tools', 'Dashboards', 'Integrations', 'Data models'],
     stack: ['Next.js', 'Python', 'FastAPI', 'PostgreSQL'],
+    features: [
+      { title: 'Internal operations tools', body: 'Custom admin interfaces, workflow management systems and internal portals built for how your team actually operates — not how a generic SaaS thinks you should.' },
+      { title: 'Data dashboards', body: 'Real-time dashboards that pull from your databases, APIs and third-party tools — with the exactly the metrics your team needs.' },
+      { title: 'System integrations', body: 'Connect legacy systems, third-party APIs and internal databases into a unified data layer your team can work from.' },
+      { title: 'Custom data models', body: 'We design data models around your business logic — not the other way around. Schema, migrations, validations and access control.' },
+      { title: 'Reporting & exports', body: 'Scheduled reports, CSV/PDF exports, email delivery and custom reporting views for different team roles.' },
+      { title: 'Role-based access', body: 'Granular permissions, team hierarchies, audit logs and SSO integration — so the right people see the right data.' },
+    ],
+    process: [
+      { no: '01', title: 'Operations audit', body: 'We spend time understanding how your team actually works — what tools they use, what manual steps they take and where time is lost.' },
+      { no: '02', title: 'Requirements & data model', body: 'User stories, data model design and API contracts defined before a line of code is written.' },
+      { no: '03', title: 'Core tool build', body: 'Built in weekly iterations with real working demos — not a big reveal at the end.' },
+      { no: '04', title: 'Integration & data migration', body: 'Connected to your existing systems and populated with real data from day one.' },
+      { no: '05', title: 'User testing & training', body: 'Tested with real users from your team, documented and trained before handover.' },
+      { no: '06', title: 'Handover & support', body: 'Full documentation, admin access, runbooks and retained support if needed.' },
+    ],
+    faqs: [
+      { q: 'How is custom software priced?', a: 'Fixed-price for well-scoped projects, time-and-materials for exploratory or evolving requirements. We agree scope clearly before starting.' },
+      { q: 'How long does it take?', a: 'A focused internal tool takes 4–8 weeks. A full custom platform takes 3–6 months depending on complexity.' },
+      { q: 'Will we own the code?', a: 'Yes — complete ownership of the codebase, infrastructure and documentation from day one.' },
+      { q: 'Can it integrate with our existing systems?', a: 'Yes — if your existing systems have an API or database we can access, we can integrate with them.' },
+    ],
+    results: [
+      { value: '-60%', label: 'Manual processing time' },
+      { value: '1 tool', label: 'Replacing 4 spreadsheets' },
+      { value: '100%', label: 'Team adoption in 30 days' },
+    ],
   },
 ]
 
@@ -160,7 +391,7 @@ export const PROJECTS: Project[] = [
     tag: 'SaaS',
     year: '2025',
     summary: 'A multi-tenant operations platform unifying billing, analytics and team workflows.',
-    image: '/work-saas-dashboard.png',
+    image: '',
     challenge:
       'A fragmented set of spreadsheets and legacy tools slowed every internal team and made scaling impossible.',
     approach:
@@ -179,7 +410,7 @@ export const PROJECTS: Project[] = [
     tag: 'AI',
     year: '2025',
     summary: 'An AI agent pipeline that triages requests and routes them across CRM, email and analytics.',
-    image: '/work-ai-workflow.png',
+    image: '',
     challenge:
       'Inbound requests were handled manually, creating delays and inconsistent responses across channels.',
     approach:
@@ -198,7 +429,7 @@ export const PROJECTS: Project[] = [
     tag: 'E-commerce',
     year: '2024',
     summary: 'A high-conversion storefront with integrated POS and unified inventory.',
-    image: '/work-ecommerce.png',
+    image: '',
     challenge:
       'Online and in-store systems were disconnected, causing stock errors and a broken customer experience.',
     approach:
@@ -217,7 +448,7 @@ export const PROJECTS: Project[] = [
     tag: 'E-commerce',
     year: '2024',
     summary: 'A resilient point-of-sale system for multi-location retail with offline support.',
-    image: '/work-pos.png',
+    image: '',
     challenge:
       'Unreliable connectivity across locations meant checkout failures and lost sales during outages.',
     approach:
@@ -236,7 +467,7 @@ export const PROJECTS: Project[] = [
     tag: 'Web',
     year: '2025',
     summary: 'An editorial marketing site engineered for performance and brand impact.',
-    image: '/work-website.png',
+    image: '',
     challenge:
       'The previous site was slow, hard to update and failed to communicate the brand’s positioning.',
     approach:
@@ -255,7 +486,7 @@ export const PROJECTS: Project[] = [
     tag: 'Mobile',
     year: '2024',
     summary: 'A cross-platform mobile app with offline sync and real-time notifications.',
-    image: '/work-mobile.png',
+    image: '',
     challenge:
       'Users needed reliable access to their data on the move, with or without a connection.',
     approach:

@@ -1,16 +1,16 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowUpRight } from 'lucide-react'
 import { Hero } from '@/components/sections/hero'
 import { Marquee } from '@/components/marquee'
 import { ServiceExplorer } from '@/components/service-explorer'
 import { WorkflowVisualization } from '@/components/workflow-visualization'
-import { ProjectCard } from '@/components/project-card'
 import { StatsSection } from '@/components/stats-section'
 import { CTASection } from '@/components/cta-section'
 import { Container, Section, Eyebrow } from '@/components/section'
 import { ScrollReveal, Stagger, StaggerItem } from '@/components/reveal'
 import { MagneticButton } from '@/components/magnetic-button'
-import { CAPABILITIES, PROJECTS, INSIGHTS } from '@/lib/site'
+import { CAPABILITIES, INSIGHTS } from '@/lib/site'
 
 const DIFFERENTIATORS = [
   {
@@ -137,49 +137,51 @@ export default function HomePage() {
         </Container>
       </Section>
 
-      {/* Featured work */}
-      <Section className="border-t-2 border-charcoal bg-stone/30">
-        <Container>
-          <div className="mb-14 flex flex-col justify-between gap-6 md:flex-row md:items-end">
-            <div>
-              <Eyebrow>Selected Work</Eyebrow>
-              <ScrollReveal>
-                <h2 className="mt-5 max-w-2xl font-display text-2xl font-semibold leading-snug tracking-wide text-charcoal md:text-4xl">
-                  A TECHNOLOGY CASE-STUDY GALLERY.
-                </h2>
-              </ScrollReveal>
-            </div>
-            <MagneticButton href="/work" variant="secondary" arrow="up-right">
-              View all work
-            </MagneticButton>
-          </div>
-          <div className="grid gap-8 md:grid-cols-2 md:gap-6">
-            {PROJECTS.slice(0, 4).map((p, i) => (
-              <ProjectCard key={p.slug} project={p} index={i} />
-            ))}
-          </div>
-        </Container>
-      </Section>
-
       <StatsSection />
 
       {/* About preview */}
       <Section className="border-t-2 border-charcoal">
         <Container>
-          <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
-            <div>
-              <Eyebrow>About</Eyebrow>
-              <ScrollReveal>
+          <div className="grid gap-12 lg:grid-cols-[380px_1fr] lg:gap-16 xl:grid-cols-[440px_1fr]">
+
+            {/* portrait image */}
+            <ScrollReveal>
+              <div className="relative border-2 border-charcoal shadow-[8px_8px_0_0_var(--charcoal)]">
+                <div className="relative aspect-[3/4] w-full overflow-hidden">
+                  <Image
+                    src="/1.jpeg"
+                    alt="Solvix Core team at work"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 440px"
+                  />
+                </div>
+                {/* pixel label bar */}
+                <div className="absolute bottom-0 left-0 right-0 border-t-2 border-charcoal bg-charcoal px-4 py-2">
+                  <span className="font-mono text-[9px] uppercase tracking-widest text-pearl/70">
+                    Solvix Core — Canadian Technology Studio
+                  </span>
+                </div>
+              </div>
+            </ScrollReveal>
+
+            {/* content */}
+            <ScrollReveal delay={0.12} className="flex flex-col justify-center gap-8">
+              <div>
+                <Eyebrow>About</Eyebrow>
                 <h2 className="mt-5 font-display text-2xl font-semibold leading-snug tracking-wide text-charcoal md:text-4xl">
                   TECHNOLOGY SHOULD MAKE BUSINESS SIMPLER.
                 </h2>
-              </ScrollReveal>
-            </div>
-            <ScrollReveal delay={0.15} className="flex flex-col justify-between gap-8">
+              </div>
               <p className="text-xl leading-relaxed text-graphite text-pretty">
                 Solvix Core is a Canadian technology studio. We combine strategy, design and
                 engineering into one accountable team — no hand-offs, no blame gaps, no inflated
                 estimates. Just clear thinking and production-grade delivery.
+              </p>
+              <p className="text-xl leading-relaxed text-graphite text-pretty">
+                We are a small, senior team. Every project gets our best thinking, not a junior
+                hand-off. We work with a focused number of clients so each one gets full attention
+                from the people who actually build their product.
               </p>
               <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
                 {[

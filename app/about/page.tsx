@@ -104,30 +104,53 @@ export default function AboutPage() {
       {/* Story */}
       <Section>
         <Container>
-          <div className="grid gap-12 lg:grid-cols-2 lg:gap-24">
-            <div>
-              <Eyebrow>Our Story</Eyebrow>
-              <AnimatedText
-                text="BUILT TO SOLVE THE REAL PROBLEM."
-                className="mt-5 font-display text-4xl font-semibold leading-[0.98] tracking-tight text-charcoal md:text-5xl"
-              />
-            </div>
-            <ScrollReveal delay={0.15} className="flex flex-col gap-6 text-lg leading-relaxed text-graphite text-pretty">
-              <p>
-                Most technology projects fail not because of bad code — but because strategy,
-                design and engineering never spoke the same language. Agencies hand off. Freelancers
-                disappear. Internal teams build in isolation. The result is the same: expensive,
-                late, and wrong.
-              </p>
-              <p>
-                We built Solvix Core to fix that. One team, one language, one point of
-                accountability. We work with a small number of businesses at a time so every project
-                gets our full attention — not a junior assigned two weeks before launch.
-              </p>
-              <p>
-                From marketing sites to multi-tenant SaaS, AI agent pipelines and business-wide
-                automation: we have one goal. Technology that earns its keep.
-              </p>
+          <div className="grid gap-12 lg:grid-cols-[1fr_420px] lg:gap-16 xl:grid-cols-[1fr_480px]">
+            {/* text */}
+            <ScrollReveal className="flex flex-col justify-center gap-8">
+              <div>
+                <Eyebrow>Our Story</Eyebrow>
+                <h2 className="mt-5 font-display text-2xl font-semibold leading-snug tracking-wide text-charcoal md:text-4xl">
+                  BUILT TO SOLVE THE REAL PROBLEM.
+                </h2>
+              </div>
+              <div className="flex flex-col gap-5 text-xl leading-relaxed text-graphite text-pretty">
+                <p>
+                  Most technology projects fail not because of bad code — but because strategy,
+                  design and engineering never spoke the same language. Agencies hand off. Freelancers
+                  disappear. Internal teams build in isolation. The result is the same: expensive,
+                  late, and wrong.
+                </p>
+                <p>
+                  We built Solvix Core to fix that. One team, one language, one point of
+                  accountability. We work with a small number of businesses at a time so every project
+                  gets our full attention — not a junior assigned two weeks before launch.
+                </p>
+                <p>
+                  From marketing sites to multi-tenant SaaS, AI agent pipelines and business-wide
+                  automation: we have one goal. Technology that earns its keep.
+                </p>
+              </div>
+            </ScrollReveal>
+
+            {/* video */}
+            <ScrollReveal delay={0.12}>
+              <div className="relative border-2 border-charcoal shadow-[8px_8px_0_0_var(--charcoal)]">
+                <div className="relative aspect-[3/4] w-full overflow-hidden bg-charcoal">
+                  <video
+                    src="/videos/2.mp4"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+                <div className="absolute bottom-0 left-0 right-0 border-t-2 border-charcoal bg-charcoal px-4 py-2">
+                  <span className="font-mono text-[9px] uppercase tracking-widest text-pearl/70">
+                    Solvix Core — How We Work
+                  </span>
+                </div>
+              </div>
             </ScrollReveal>
           </div>
         </Container>

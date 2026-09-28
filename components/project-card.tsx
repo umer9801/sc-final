@@ -2,8 +2,7 @@
 
 import { useRef } from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
-import { motion, useMotionValue, useSpring, useTransform } from 'motion/react'
+import { motion, useMotionValue } from 'motion/react'
 import { ArrowUpRight } from 'lucide-react'
 import type { Project } from '@/lib/site'
 
@@ -18,12 +17,19 @@ const TAG_COLORS: Record<string, string> = {
   'E-commerce': 'bg-peach   text-charcoal border-charcoal',
 }
 
+const TAG_PATTERN: Record<string, string> = {
+  Web:          '▓▒░ WEB ░▒▓',
+  SaaS:         '▓▒░ SAAS ░▒▓',
+  AI:           '▓▒░ AI ░▒▓',
+  Automation:   '▓▒░ AUTO ░▒▓',
+  Mobile:       '▓▒░ MOB ░▒▓',
+  'E-commerce': '▓▒░ ECOM ░▒▓',
+}
+
 export function ProjectCard({ project, index = 0 }: { project: Project; index?: number }) {
   const ref = useRef<HTMLAnchorElement>(null)
   const rx = useMotionValue(0)
   const ry = useMotionValue(0)
-  const imgX = useSpring(useTransform(rx, [-0.5, 0.5], [-14, 14]), { stiffness: 150, damping: 20 })
-  const imgY = useSpring(useTransform(ry, [-0.5, 0.5], [-14, 14]), { stiffness: 150, damping: 20 })
 
   const handleMove = (e: React.MouseEvent) => {
     const r = ref.current?.getBoundingClientRect()
@@ -48,39 +54,42 @@ export function ProjectCard({ project, index = 0 }: { project: Project; index?: 
         onMouseLeave={reset}
         className="block"
       >
-        {/* image */}
-        <div className="relative aspect-[4/3] overflow-hidden border-b-2 border-charcoal bg-stone">
-          <motion.div style={{ x: imgX, y: imgY }} className="absolute inset-[-8%]">
-            <Image
-              src={project.image || '/placeholder.svg'}
-              alt={`${project.title} — ${project.category}`}
-              fill
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-cover transition-transform duration-700 group-hover:scale-103"
-            />
-          </motion.div>
+        {/* pixel placeholder — no image */}
+        <div className="relative flex aspect-[4/3] items-center justify-center overflow-hidden border-b-2 border-charcoal bg-stone">
+          {/* pixel grid bg */}
+          <div
+            className="absolute inset-0 opacity-40"
+            style={{
+              backgroundImage:
+                'linear-gradient(to right, var(--line) 1px, transparent 1px), linear-gradient(to bottom, var(--line) 1px, transparent 1px)',
+              backgroundSize: '16px 16px',
+            }}
+          />
 
-          {/* dark overlay on hover */}
-          <div className="absolute inset-0 bg-charcoal/30 opacity-0 transition-opacity duration-400 group-hover:opacity-100" />
+          {/* center label */}
+          <div className="relative flex flex-col items-center gap-3 select-none">
+            <span className="font-mono text-xl text-charcoal/20">
+              {TAG_PATTERN[project.tag] ?? '▓▒░░▒▓'}
+            </span>
+            <span className="font-mono text-[10px] uppercase tracking-widest text-graphite/50">
+              Image coming soon
+            </span>
+          </div>
 
-          {/* tag badge — pixel style */}
+          {/* tag badge */}
           <div className="absolute left-0 top-0">
             <span className={`inline-block border-b-2 border-r-2 px-3 py-1.5 font-mono text-[9px] uppercase tracking-widest ${TAG_COLORS[project.tag] ?? 'bg-stone text-charcoal border-charcoal'}`}>
               {project.tag}
             </span>
           </div>
 
-          {/* arrow — slides in on hover */}
-          <motion.div
-            initial={{ opacity: 0, y: 8 }}
-            whileHover={{ opacity: 1, y: 0 }}
-            className="absolute right-3 top-3 flex size-9 items-center justify-center border-2 border-charcoal bg-pearl"
-          >
+          {/* arrow hover */}
+          <div className="absolute right-3 top-3 flex size-9 items-center justify-center border-2 border-charcoal bg-pearl opacity-0 transition-opacity duration-200 group-hover:opacity-100">
             <ArrowUpRight className="size-4 text-charcoal" />
-          </motion.div>
+          </div>
 
-          {/* pixel year watermark */}
-          <span className="absolute bottom-2 right-3 font-mono text-[8px] text-pearl/40 select-none">
+          {/* year */}
+          <span className="absolute bottom-2 right-3 font-mono text-[8px] text-graphite/40 select-none">
             {project.year}
           </span>
         </div>
@@ -89,14 +98,14 @@ export function ProjectCard({ project, index = 0 }: { project: Project; index?: 
         <div className="p-5">
           <div className="flex items-start justify-between gap-3">
             <div>
-              <h3 className="font-display text-base font-semibold leading-tight tracking-wide text-charcoal">
+              <h3 className="font-display text-sm font-semibold leading-snug tracking-wide text-charcoal">
                 {project.title}
               </h3>
               <p className="mt-1.5 font-mono text-xs uppercase tracking-widest text-graphite">
                 {project.category}
               </p>
             </div>
-            <ArrowUpRight className="mt-1 size-4 shrink-0 text-graphite/30 transition-all group-hover:text-forest group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            <ArrowUpRight className="mt-1 size-4 shrink-0 text-graphite/30 transition-all group-hover:text-forest" />
           </div>
         </div>
       </Link>
