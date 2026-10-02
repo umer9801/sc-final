@@ -2,7 +2,7 @@ import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import { Press_Start_2P, VT323, Share_Tech_Mono } from 'next/font/google'
 import './globals.css'
-import { SiteShell } from '@/components/site-shell'
+import { LayoutWrapper } from '@/components/layout-wrapper'
 
 /* pixel body — VT323 is large and very readable at body sizes */
 const inter = VT323({
@@ -34,20 +34,21 @@ export const metadata: Metadata = {
     template: '%s — Solvix Core',
   },
   description:
-    'Solvix Core designs and engineers websites, software, AI systems and automation that help ambitious businesses operate better and grow faster.',
+    'Solvix Core designs and engineers websites, software, AI systems and automation that help ambitious UK businesses operate better and grow faster.',
   keywords: [
-    'digital engineering',
-    'web development',
+    'web development UK',
+    'digital agency UK',
+    'website design UK',
     'SaaS development',
     'AI automation',
     'n8n',
-    'custom software',
-    'Canada technology company',
+    'custom software UK',
+    'UK technology company',
   ],
   openGraph: {
     title: 'Solvix Core — Digital Engineering Studio',
     description:
-      'We build digital systems that move business. Websites, software, AI systems and automation.',
+      'We build websites, software, AI systems and automation for ambitious UK businesses.',
     type: 'website',
   },
 }
@@ -63,7 +64,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${display.variable} ${mono.variable}`}>
       <body className="antialiased font-sans">
-        <SiteShell>{children}</SiteShell>
+        <LayoutWrapper>{children}</LayoutWrapper>
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>

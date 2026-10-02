@@ -12,7 +12,7 @@ import { AnimatedText, ScrollReveal, Stagger, StaggerItem } from '@/components/r
 export const metadata: Metadata = {
   title: 'About',
   description:
-    'Solvix Core is a Canadian technology studio combining strategy, design and engineering into one accountable team.',
+    'Solvix Core is a UK technology studio combining strategy, design and engineering into one accountable team.',
 }
 
 const VALUES = [
@@ -98,7 +98,7 @@ export default function AboutPage() {
           { text: 'MAKE BUSINESS', highlight: true },
           { text: 'SIMPLER.' },
         ]}
-        intro="Solvix Core is a Canadian technology studio. We design and engineer digital products, AI systems and automation for ambitious businesses — one accountable team, no hand-offs."
+        intro="Solvix Core is a UK technology studio. We design and engineer digital products, AI systems and automation for ambitious businesses — one accountable team, no hand-offs."
       />
 
       {/* Story */}

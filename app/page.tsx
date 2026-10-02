@@ -159,7 +159,7 @@ export default function HomePage() {
                 {/* pixel label bar */}
                 <div className="absolute bottom-0 left-0 right-0 border-t-2 border-charcoal bg-charcoal px-4 py-2">
                   <span className="font-mono text-[9px] uppercase tracking-widest text-pearl/70">
-                    Solvix Core — Canadian Technology Studio
+                    Solvix Core — UK technology studio
                   </span>
                 </div>
               </div>
@@ -174,7 +174,7 @@ export default function HomePage() {
                 </h2>
               </div>
               <p className="text-xl leading-relaxed text-graphite text-pretty">
-                Solvix Core is a Canadian technology studio. We combine strategy, design and
+                Solvix Core is a UK technology studio. We combine strategy, design and
                 engineering into one accountable team — no hand-offs, no blame gaps, no inflated
                 estimates. Just clear thinking and production-grade delivery.
               </p>

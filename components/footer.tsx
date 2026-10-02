@@ -67,14 +67,14 @@ export function Footer() {
               Let&apos;s build something useful.
             </p>
             <a
-              href="mailto:info@solvixcore.com"
+              href="mailto:info@solvixcore.uk"
               className="group mt-5 inline-flex items-center gap-2 border-b-2 border-forest pb-0.5 font-mono text-sm text-charcoal hover:text-forest transition-colors"
             >
-              info@solvixcore.com
+              info@solvixcore.uk
               <ArrowUpRight className="size-3.5 text-forest" />
             </a>
             <p className="mt-3 font-mono text-xs text-graphite">
-              Canada · Working with teams worldwide
+              United Kingdom · Working with businesses worldwide
             </p>
           </div>
 

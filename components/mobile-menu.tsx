@@ -88,10 +88,10 @@ export function MobileMenu({ onClose }: { onClose: () => void }) {
             <ArrowUpRight className="size-3.5" />
           </Link>
           <a
-            href="mailto:info@solvixcore.com"
+            href="mailto:info@solvixcore.uk"
             className="mt-3 block text-center font-mono text-[9px] tracking-widest text-graphite/60"
           >
-            info@solvixcore.com
+            info@solvixcore.uk
           </a>
         </motion.div>
       </motion.aside>

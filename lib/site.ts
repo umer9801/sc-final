@@ -377,126 +377,121 @@ export type Project = {
   year: string
   summary: string
   image: string
-  challenge: string
-  approach: string
-  results: { value: string; label: string }[]
+  liveUrl?: string
   stack: string[]
 }
 
+
 export const PROJECTS: Project[] = [
   {
-    slug: 'nordwind-saas-platform',
-    title: 'Nordwind Platform',
-    category: 'SaaS Platform',
-    tag: 'SaaS',
-    year: '2025',
-    summary: 'A multi-tenant operations platform unifying billing, analytics and team workflows.',
-    image: '',
-    challenge:
-      'A fragmented set of spreadsheets and legacy tools slowed every internal team and made scaling impossible.',
-    approach:
-      'We designed a single multi-tenant platform with a shared data model, granular roles and a real-time analytics layer.',
-    results: [
-      { value: '4.2x', label: 'Faster onboarding' },
-      { value: '-38%', label: 'Support tickets' },
-      { value: '99.9%', label: 'Uptime' },
-    ],
-    stack: ['Next.js', 'PostgreSQL', 'Node.js', 'Stripe'],
-  },
-  {
-    slug: 'helix-ai-automation',
-    title: 'Helix Automation',
-    category: 'AI Automation System',
-    tag: 'AI',
-    year: '2025',
-    summary: 'An AI agent pipeline that triages requests and routes them across CRM, email and analytics.',
-    image: '',
-    challenge:
-      'Inbound requests were handled manually, creating delays and inconsistent responses across channels.',
-    approach:
-      'We built an AI agent layer on top of n8n that classifies, enriches and routes every request automatically.',
-    results: [
-      { value: '82%', label: 'Auto-resolved' },
-      { value: '11h', label: 'Saved weekly' },
-      { value: '<2min', label: 'Response time' },
-    ],
-    stack: ['OpenAI', 'n8n', 'LangChain', 'Node.js'],
-  },
-  {
-    slug: 'meridian-ecommerce',
-    title: 'Meridian Store',
-    category: 'E-commerce Platform',
-    tag: 'E-commerce',
+    slug: 'dairy-barn-and-grill',
+    title: 'Dairy Barn & Grill',
+    category: 'Restaurant Website',
+    tag: 'Web',
     year: '2024',
-    summary: 'A high-conversion storefront with integrated POS and unified inventory.',
-    image: '',
-    challenge:
-      'Online and in-store systems were disconnected, causing stock errors and a broken customer experience.',
-    approach:
-      'We unified storefront, POS and inventory into a single system with real-time sync and a refined checkout.',
-    results: [
-      { value: '+46%', label: 'Conversion' },
-      { value: '2.1s', label: 'Load time' },
-      { value: '0', label: 'Stock conflicts' },
-    ],
-    stack: ['Next.js', 'Shopify', 'Stripe', 'Postgres'],
+    summary: 'A full-featured restaurant website with online menu, location info and brand storytelling for a beloved Canadian dining destination.',
+    image: '/p1.jpeg',
+    liveUrl: '',
+    stack: ['Next.js', 'Tailwind', 'Vercel'],
   },
   {
-    slug: 'atlas-pos-system',
-    title: 'Atlas POS',
-    category: 'POS System',
-    tag: 'E-commerce',
+    slug: 'sleek-automotive',
+    title: 'Sleek Automotive',
+    category: 'Automotive Website',
+    tag: 'Web',
     year: '2024',
-    summary: 'A resilient point-of-sale system for multi-location retail with offline support.',
-    image: '',
-    challenge:
-      'Unreliable connectivity across locations meant checkout failures and lost sales during outages.',
-    approach:
-      'We engineered an offline-first POS that syncs seamlessly and never blocks a sale.',
-    results: [
-      { value: '100%', label: 'Offline sales' },
-      { value: '-63%', label: 'Checkout errors' },
-      { value: '12', label: 'Locations' },
-    ],
-    stack: ['React', 'Node.js', 'SQLite', 'PostgreSQL'],
+    summary: 'A sleek, performance-focused website for an automotive business built to showcase vehicles, services and drive customer enquiries.',
+    image: '/p2.jpeg',
+    liveUrl: '',
+    stack: ['Next.js', 'TypeScript', 'Tailwind'],
   },
   {
-    slug: 'verde-business-site',
-    title: 'Verde Studio',
-    category: 'Business Website',
+    slug: 'eza-logistics',
+    title: 'EZA Logistics',
+    category: 'Logistics & Transport Website',
+    tag: 'Web',
+    year: '2024',
+    summary: 'A professional logistics company website communicating services, fleet capabilities and a seamless quote request experience.',
+    image: '/p3.jpeg',
+    liveUrl: '',
+    stack: ['Next.js', 'Tailwind', 'Vercel'],
+  },
+  {
+    slug: 'al-chemist-coffee-bar',
+    title: 'Al Chemist Coffee Bar',
+    category: 'Cafe & Bar Website',
     tag: 'Web',
     year: '2025',
-    summary: 'An editorial marketing site engineered for performance and brand impact.',
-    image: '',
-    challenge:
-      'The previous site was slow, hard to update and failed to communicate the brand’s positioning.',
-    approach:
-      'We built a fast, CMS-driven site with a bespoke design system and motion-led storytelling.',
-    results: [
-      { value: '98', label: 'Lighthouse' },
-      { value: '+120%', label: 'Engagement' },
-      { value: '0.4s', label: 'LCP' },
-    ],
-    stack: ['Next.js', 'Sanity', 'Tailwind', 'Vercel'],
+    summary: 'A rich, atmospheric website for a specialty coffee bar capturing brand identity, menu offerings and the in-store experience online.',
+    image: '/p5.jpeg',
+    liveUrl: '',
+    stack: ['Next.js', 'Sanity', 'Tailwind'],
   },
   {
-    slug: 'pulse-mobile-app',
-    title: 'Pulse App',
-    category: 'Mobile Application',
-    tag: 'Mobile',
+    slug: 'mmm-studio-by-moni',
+    title: 'MMM Studio By Moni',
+    category: 'Beauty & Makeup Studio Website',
+    tag: 'Web',
+    year: '2025',
+    summary: 'An elegant portfolio and booking website for a professional makeup studio showcasing work, services and enabling direct client bookings.',
+    image: '/p6.jpeg',
+    liveUrl: '',
+    stack: ['Next.js', 'Tailwind', 'Vercel'],
+  },
+  {
+    slug: 'sudcan-painting',
+    title: 'Sudcan Painting',
+    category: 'Trades & Services Website',
+    tag: 'Web',
     year: '2024',
-    summary: 'A cross-platform mobile app with offline sync and real-time notifications.',
-    image: '',
-    challenge:
-      'Users needed reliable access to their data on the move, with or without a connection.',
-    approach:
-      'We shipped a cross-platform app with an offline-first architecture and polished, native-feeling motion.',
-    results: [
-      { value: '4.8', label: 'App rating' },
-      { value: '60fps', label: 'Interactions' },
-      { value: '2', label: 'Platforms' },
-    ],
-    stack: ['React Native', 'Expo', 'TypeScript', 'Firebase'],
+    summary: 'A clean, trust-building website for a professional painting contractor featuring services, past work gallery and a simple quote request form.',
+    image: '/p7.jpeg',
+    liveUrl: '',
+    stack: ['Next.js', 'Tailwind', 'Vercel'],
+  },
+  {
+    slug: 'proper-accounting-uk',
+    title: 'Proper Accounting UK',
+    category: 'Accounting & Finance Website',
+    tag: 'Web',
+    year: '2025',
+    summary: 'A professional accounting firm website built to communicate expertise, services and compliance knowledge to UK-based business clients.',
+    image: '/p8.jpeg',
+    liveUrl: '',
+    stack: ['Next.js', 'TypeScript', 'Tailwind'],
+  },
+  {
+    slug: 'prudential-legal-services',
+    title: 'Prudential Legal Services',
+    category: 'Legal Services Website',
+    tag: 'Web',
+    year: '2025',
+    summary: 'A credibility-first legal services website conveying authority, practice areas and a clear path for prospective clients to get in touch.',
+    image: '/p9.jpeg',
+    liveUrl: '',
+    stack: ['Next.js', 'Tailwind', 'Vercel'],
+  },
+  {
+    slug: 'lepro-wellness-center',
+    title: 'Lepro Wellness Center',
+    category: 'Health & Wellness Website',
+    tag: 'Web',
+    year: '2025',
+    summary: 'A calming, conversion-focused wellness center website featuring services, team profiles and an integrated appointment booking system.',
+    image: '/p10.jpeg',
+    liveUrl: '',
+    stack: ['Next.js', 'Sanity', 'Tailwind'],
+  },
+  {
+    slug: 'lucky-driving-school',
+    title: 'Lucky Driving School',
+    category: 'Driving School Website',
+    tag: 'Web',
+    year: '2025',
+    summary: 'A clear, action-oriented website for a driving school covering lesson packages, instructor profiles and a streamlined online booking flow.',
+    image: '/p11.jpeg',
+    liveUrl: '',
+    stack: ['Next.js', 'Tailwind', 'Vercel'],
   },
 ]
 
@@ -1004,3 +999,4 @@ SET LOCAL app.tenant_id = '${'{tenant_id}'}';`,
 ]
 
 export const INSIGHT_CATEGORIES = ['AI', 'Automation', 'Web Development', 'SaaS', 'Technology', 'Business']
+
