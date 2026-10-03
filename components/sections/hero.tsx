@@ -52,6 +52,7 @@ export function Hero() {
       onMouseMove={handleMove}
       onMouseLeave={reset}
       className="relative overflow-hidden pt-32 pb-16 md:pt-40 lg:pt-44"
+      aria-label="Hero section"
     >
       {/* pixel grid bg */}
       <div className="pointer-events-none absolute inset-0 bg-grid opacity-70" />

@@ -11,6 +11,9 @@ import { Container, Section, Eyebrow } from '@/components/section'
 import { ScrollReveal, Stagger, StaggerItem } from '@/components/reveal'
 import { MagneticButton } from '@/components/magnetic-button'
 import { CAPABILITIES, INSIGHTS } from '@/lib/site'
+import { pageMetadata } from '@/lib/metadata'
+
+export const metadata = pageMetadata.home
 
 const DIFFERENTIATORS = [
   {
@@ -37,7 +40,7 @@ const DIFFERENTIATORS = [
 
 export default function HomePage() {
   return (
-    <>
+    <main>
       <Hero />
 
       {/* Capabilities marquee */}
@@ -263,6 +266,6 @@ export default function HomePage() {
       </Section>
 
       <CTASection />
-    </>
+    </main>
   )
 }

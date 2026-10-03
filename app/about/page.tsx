@@ -8,12 +8,9 @@ import { StatsSection } from '@/components/stats-section'
 import { CTASection } from '@/components/cta-section'
 import { Container, Section, Eyebrow } from '@/components/section'
 import { AnimatedText, ScrollReveal, Stagger, StaggerItem } from '@/components/reveal'
+import { pageMetadata } from '@/lib/metadata'
 
-export const metadata: Metadata = {
-  title: 'About',
-  description:
-    'Solvix Core is a UK technology studio combining strategy, design and engineering into one accountable team.',
-}
+export const metadata = pageMetadata.about
 
 const VALUES = [
   {
@@ -69,28 +66,34 @@ const DISCIPLINES = [
 
 const TEAM = [
   {
-    name: 'Ahmad Farooq',
-    role: 'Founder & Lead Engineer',
-    bio: 'Full-stack engineer and product architect with 8+ years shipping SaaS, AI systems and automation at scale.',
-    focus: ['Architecture', 'AI', 'SaaS'],
+    name: 'Muhammad Umer',
+    role: 'Founder & Owner',
+    bio: 'Visionary founder driving technical excellence and business strategy. Leads the studio with a focus on delivering exceptional digital products.',
+    focus: ['Strategy', 'Leadership', 'Innovation'],
   },
   {
-    name: 'Sarah Chen',
-    role: 'Design Lead',
-    bio: 'Product designer specializing in complex interfaces, design systems and motion-led storytelling.',
-    focus: ['Product Design', 'Design Systems', 'Motion'],
+    name: 'Shahryar Javed',
+    role: 'Co-Owner, CTO & Sales Lead',
+    bio: 'Co-owner and technical architect driving engineering excellence. Bridges client needs with cutting-edge solutions while scaling our business.',
+    focus: ['Architecture', 'Sales', 'Engineering'],
   },
   {
-    name: 'Marcus Webb',
-    role: 'Backend & Infrastructure',
-    bio: 'Systems engineer focused on data modeling, API design and infrastructure that scales without surprises.',
-    focus: ['Node.js', 'PostgreSQL', 'AWS'],
+    name: 'Muhammad Abubakar',
+    role: 'CEO & Lead Software Engineer',
+    bio: 'Leading operations and engineering excellence. Architecting scalable systems while ensuring every project delivers measurable business impact.',
+    focus: ['Engineering', 'Leadership', 'Architecture'],
+  },
+  {
+    name: 'Abdul Wahab',
+    role: 'Marketing & Business Development',
+    bio: 'Building the Solvix brand and driving market presence. Crafts compelling narratives and expands our reach globally.',
+    focus: ['Marketing', 'Brand', 'Growth'],
   },
 ]
 
 export default function AboutPage() {
   return (
-    <>
+    <main>
       <PageHero
         eyebrow="About / Studio"
         lines={[
@@ -277,26 +280,26 @@ export default function AboutPage() {
               </p>
             </ScrollReveal>
           </div>
-          <div className="grid gap-6 md:grid-cols-3">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {TEAM.map((member, i) => (
               <ScrollReveal key={member.name} delay={i * 0.08}>
-                <div className="rounded-3xl border border-line bg-pearl p-8">
+                <div className="flex h-full flex-col rounded-3xl border border-line bg-pearl p-6">
                   {/* Avatar placeholder */}
-                  <div className="mb-6 flex size-16 items-center justify-center rounded-2xl border border-line bg-stone font-display text-xl font-semibold text-forest">
+                  <div className="mb-4 flex size-14 items-center justify-center rounded-2xl border border-line bg-stone font-display text-lg font-semibold text-forest">
                     {member.name.charAt(0)}
                   </div>
-                  <h3 className="font-display text-xl font-semibold text-charcoal">
+                  <h3 className="font-display text-base font-semibold text-charcoal leading-tight">
                     {member.name}
                   </h3>
-                  <p className="mt-1 font-mono text-xs uppercase tracking-widest text-forest">
+                  <p className="mt-1 font-mono text-[9px] uppercase tracking-widest text-forest">
                     {member.role}
                   </p>
-                  <p className="mt-4 text-sm leading-relaxed text-graphite">{member.bio}</p>
-                  <div className="mt-6 flex flex-wrap gap-2">
+                  <p className="mt-3 flex-1 text-xs leading-relaxed text-graphite">{member.bio}</p>
+                  <div className="mt-4 flex flex-wrap gap-1.5">
                     {member.focus.map((f) => (
                       <span
                         key={f}
-                        className="rounded-full border border-line bg-stone px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-charcoal/70"
+                        className="rounded-full border border-line bg-stone px-2.5 py-0.5 font-mono text-[9px] uppercase tracking-widest text-charcoal/70"
                       >
                         {f}
                       </span>
@@ -377,6 +380,6 @@ export default function AboutPage() {
       </Section>
 
       <CTASection />
-    </>
+    </main>
   )
 }

@@ -3,6 +3,8 @@ import type { Metadata, Viewport } from 'next'
 import { Press_Start_2P, VT323, Share_Tech_Mono } from 'next/font/google'
 import './globals.css'
 import { LayoutWrapper } from '@/components/layout-wrapper'
+import { createMetadata } from '@/lib/metadata'
+import { OrganizationStructuredData, WebSiteStructuredData, LocalBusinessStructuredData } from '@/components/structured-data'
 
 /* pixel body — VT323 is large and very readable at body sizes */
 const inter = VT323({
@@ -28,41 +30,26 @@ const mono = Share_Tech_Mono({
   weight: ['400'],
 })
 
-export const metadata: Metadata = {
-  title: {
-    default: 'Solvix Core — Digital Engineering Studio',
-    template: '%s — Solvix Core',
-  },
-  description:
-    'Solvix Core designs and engineers websites, software, AI systems and automation that help ambitious UK businesses operate better and grow faster.',
-  keywords: [
-    'web development UK',
-    'digital agency UK',
-    'website design UK',
-    'SaaS development',
-    'AI automation',
-    'n8n',
-    'custom software UK',
-    'UK technology company',
-  ],
-  openGraph: {
-    title: 'Solvix Core — Digital Engineering Studio',
-    description:
-      'We build websites, software, AI systems and automation for ambitious UK businesses.',
-    type: 'website',
-  },
-}
+export const metadata = createMetadata()
 
 export const viewport: Viewport = {
-  colorScheme: 'light',
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
   themeColor: '#f7f6f2',
+  colorScheme: 'light',
 }
 
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${display.variable} ${mono.variable}`}>
+    <html lang="en-GB" className={`${inter.variable} ${display.variable} ${mono.variable}`}>
+      <head>
+        <OrganizationStructuredData />
+        <WebSiteStructuredData />
+        <LocalBusinessStructuredData />
+      </head>
       <body className="antialiased font-sans">
         <LayoutWrapper>{children}</LayoutWrapper>
         {process.env.NODE_ENV === 'production' && <Analytics />}

@@ -73,8 +73,17 @@ export function Footer() {
               info@solvixcore.uk
               <ArrowUpRight className="size-3.5 text-forest" />
             </a>
+            <a
+              href="https://wa.me/447348486506"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group mt-3 inline-flex items-center gap-2 border-b-2 border-forest pb-0.5 font-mono text-sm text-charcoal hover:text-forest transition-colors"
+            >
+              +44 7348 486506
+              <ArrowUpRight className="size-3.5 text-forest" />
+            </a>
             <p className="mt-3 font-mono text-xs text-graphite">
-              United Kingdom · Working with businesses worldwide
+              Working remotely · Serving businesses globally
             </p>
           </div>
 

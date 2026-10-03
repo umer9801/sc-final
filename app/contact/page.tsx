@@ -11,6 +11,7 @@ import { submitContactForm } from '@/app/actions/contact'
 
 const CONTACT_INFO = [
   { icon: Mail,    label: 'Email',         value: 'info@solvixcore.uk',       href: 'mailto:info@solvixcore.uk' },
+  { icon: MapPin,  label: 'WhatsApp',      value: '+44 7348 486506',          href: 'https://wa.me/447348486506' },
   { icon: MapPin,  label: 'Location',      value: 'United Kingdom — remote-first', href: null },
   { icon: Clock,   label: 'Response time', value: 'Within 24 hours',          href: null },
 ]
